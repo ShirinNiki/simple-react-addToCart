@@ -1,14 +1,16 @@
-
-import './App.css';
-import Layout from './container/Layout/Layout';
-import Shopping from './container/shopping/Shopping';
+import "./App.css";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import { Container } from "react-bootstrap";
 
 function App() {
   return (
-    <div className="App">
-      <Layout>
-        <Shopping />
-      </Layout>
+    <div id="app">
+      <Header />
+      <main>
+        <Container>test</Container>
+      </main>
+      <Footer />
     </div>
   );
 }
