@@ -1,12 +1,15 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 import nik from "../../assets/niki.png";
 
 function Header() {
   return (
-    <div>
-      <Navbar bg="dark" variant="dark">
-        <Container>
+    <Navbar bg="dark" variant="dark">
+      <Container>
+        <LinkContainer to="/">
           <Navbar.Brand href="#home">
             <img
               alt=""
@@ -17,13 +20,21 @@ function Header() {
             />{" "}
             Nik Tech
           </Navbar.Brand>
-          <Nav className="justify-content-end">
-            <Nav.Link href="#home">ADD TO CART</Nav.Link>
-            <Nav.Link href="#features">ACCOUNT</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-    </div>
+        </LinkContainer>
+        <Nav className="justify-content-end">
+          <LinkContainer to="/cart">
+            <Nav.Link>
+              <FontAwesomeIcon icon={faBasketShopping} />
+            </Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/dashboard">
+            <Nav.Link>
+              <FontAwesomeIcon icon={faUser} />
+            </Nav.Link>
+          </LinkContainer>
+        </Nav>
+      </Container>
+    </Navbar>
   );
 }
 
