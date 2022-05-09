@@ -1,18 +1,23 @@
 import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { productDetailAction } from "../action/productAction";
 import { Row, Col, Image, ListGroup, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
-function Product() {
+function Product({ history }) {
   const params = useParams();
+  //const history = useHistory();
+  let navigate = useNavigate();
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.productDetail);
   const { loading, product } = productDetail;
-
+  console.log(params);
   useEffect(() => {
     dispatch(productDetailAction(params.id));
   }, [dispatch, params]);
+  const addToCartHandler = () => {
+    navigate(`/cart/${params.id}`);
+  };
   return (
     <div>
       <Row className="mt-5">
@@ -35,7 +40,12 @@ function Product() {
             </ListGroup>
           </Col>
           <Col md={3}>
-            <Button className="m-auto" variant="primary" size="lg">
+            <Button
+              className="m-auto"
+              variant="primary"
+              size="lg"
+              onClick={addToCartHandler}
+            >
               Add to card
             </Button>
           </Col>
